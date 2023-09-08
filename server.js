@@ -10,7 +10,10 @@ const app = express();
 // Middleware
 app.use(express.json());
 
+//Contacts
 app.use("/api/contacts", require("./routes/contactRoutes"));
+//Users
+app.use("/api/users", require("./routes/userRoutes"));
 
 app.use(errorHandler);
 
