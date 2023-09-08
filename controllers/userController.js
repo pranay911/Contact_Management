@@ -16,7 +16,21 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User Already Register");
   }
   //Password Hashing
-  const newUser = await User.res.json({ message: "Register User" });
+  const hashPassword = await bcrypt.hash(password, 10);
+  console.log(hashPassword);
+  const newUser = await User.create({
+    username,
+    email,
+    password: hashPassword,
+  });
+  console.log("User Created");
+  if (newUser) {
+    res.status(201).json({ _id: user.id, email: user.email });
+  } else {
+    res.status(400);
+    throw new Error("User data is not Valid!!");
+  }
+  res.json(newUser);
 });
 
 //@desc Login a user
