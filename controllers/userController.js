@@ -7,18 +7,19 @@ const registerUser = asyncHandler(async (req, res) => {
   res.json({ message: "Register User" });
 });
 
-//@desc Register a user
-//@route POST /api/users/register
+//@desc Login a user
+//@route POST /api/users/login
 //@access public
 const loginUser = asyncHandler(async (req, res) => {
   res.json({ message: "Login User" });
 });
 
-//@desc Register a user
-//@route POST /api/users/register
-//@access public
+//@desc Current a user
+//@route GETT /api/users/current
+//@access private
+//Only login user can access
 const currentUser = asyncHandler(async (req, res) => {
-  res.json({ message: "Current User" });
+  res.json({ message: "Current User Info" });
 });
 
 module.exports = { registerUser, loginUser, currentUser };
