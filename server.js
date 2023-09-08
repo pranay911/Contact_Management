@@ -5,9 +5,8 @@ const dotenv = require("dotenv");
 
 const app = express();
 
-app.get("/api/contacts", (req, res) => {
-  res.send("Get All Contacts");
-});
+// Middleware
+app.use("/api/contacts", require("./routes/contactRoutes"));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
