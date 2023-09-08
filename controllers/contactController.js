@@ -79,7 +79,7 @@ const deleteContact = asyncHandler(async (req, res) => {
       "User dont have permssion to delete the other user contacts"
     );
   }
-  await Contact.deleteOne();
+  await Contact.deleteOne({ _id: req.params.id });
   res.status(200).json(contact);
 });
 
